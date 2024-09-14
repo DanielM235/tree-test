@@ -1,0 +1,5 @@
+<div class="py-5">
+  <div *ngIf="account$ | async as account">
+    Bienvenue, {{ account ? account.firstName : 'Veuillez vous identifier' }}
+  </div>
+</div>

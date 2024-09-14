@@ -1,0 +1,10 @@
+<div #treeContainer style="overflow: hidden;">
+<tree-root #tree [nodes]="documentations"
+           [focused]="true">
+  <ng-template #treeNodeWrapperTemplate let-node let-index="index" let-templates="templates" class="tree-folder">
+    <app-test-tree-item class="node-wrapper" [node]="node" [index]="index"></app-test-tree-item>
+  </ng-template>
+  <ng-template #loadingTemplate let-node>
+  </ng-template>
+</tree-root>
+</div>

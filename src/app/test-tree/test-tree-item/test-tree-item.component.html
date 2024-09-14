@@ -1,0 +1,12 @@
+<div class="tree-folder-header"
+     (click)="node?.mouseAction('click', $event)"
+     (dblclick)="node?.mouseAction('dblClick', $event)"
+     (contextmenu)="node?.mouseAction('contextMenu', $event)"
+     (treeDrop)="node?.onDrop($event)"
+     [treeAllowDrop]="node?.allowDrop"
+     [treeDrag]="node"
+     [treeDragEnabled]="node?.allowDrag()">
+  <div class="tree-item-name" [title]="getTitle()">{{ getTitle() }}
+  </div>
+</div>
+<!--<tree-node-content [node]="node" [index]="index"></tree-node-content>-->

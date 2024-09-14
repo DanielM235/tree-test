@@ -1,0 +1,8 @@
+<aside class="page-sidebar flex-sidebar">
+  <accordion class="nav sidebar-menu" [closeOthers]="true" *ngFor="let item of groups" [isAnimated]="true">
+    <accordion-group [heading]="'IM ' + item.id" [isOpen]="isOpen(item)" (click)="activeChange.emit(item.id)">
+      <app-left-sidebar-item>
+      </app-left-sidebar-item>
+    </accordion-group>
+  </accordion>
+</aside>

@@ -1,18 +1,42 @@
-import { NgModule } from '@angular/core';
+import { isDevMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { EffectsModule } from '@ngrx/effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { treeReducer } from './store/reducers/tree.reducer';
+import { TreeEffects } from './store/effects/tree.effects';
+import { TestTreeModule } from './test-tree/test-tree.module';
+import { AuthEffects } from './store/effects/auth.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { authReducer } from './store/reducers/auth.reducer';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    StoreModule.forRoot({ tree: treeReducer, auth: authReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Conserve les 25 derniers états
+      logOnly: !isDevMode(), // Mode lecture seule en production
+      autoPause: true, // Pause l'enregistrement quand la fenêtre DevTools est fermée
+      // trace: false, // Inclut la trace de pile pour chaque action
+      // traceLimit: 75, // Limite des frames de trace de pile
+      // connectInZone: true // Établit la connexion dans la zone Angular
+    }),
+    EffectsModule.forRoot([TreeEffects, AuthEffects]),
+    BrowserAnimationsModule,
+    TestTreeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
