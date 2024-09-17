@@ -1,6 +1,7 @@
 import { Route, Routes } from '@angular/router';
 import { EditionComponent } from './edition.component';
 import { ImListResolver } from './resolvers/im-list.resolver';
+import { EditionStateResolver } from './resolvers/edition-state.resolver';
 
 export const EditionRoutePath = 'edition';
 
@@ -14,7 +15,7 @@ export const EditionRoutes: Routes = [
             path: '',
             component: EditionComponent,
             resolve: {
-                informationMaps: ImListResolver
+              editionState: EditionStateResolver
             }
         },
         {

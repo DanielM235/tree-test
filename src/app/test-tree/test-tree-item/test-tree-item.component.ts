@@ -20,4 +20,34 @@ export class TestTreeItemComponent implements OnInit {
   getTitle(): string {
     return 'test';
   }
+
+  getStyle() {
+    if (this.node) {
+      let paddingLeft = parseInt(this.node.getNodePadding(), 10);
+      if (!this.node.hasChildren) {
+        paddingLeft = paddingLeft + 20;
+      }
+      // Add extra padding for translation warning icon if necessary
+      paddingLeft += paddingLeft < 20 && !this.isRoot() ? 10 : 0;
+
+      return {'padding-left': `${paddingLeft}px`};
+    }
+    return null;
+  }
+
+  getIcon() {
+    if (this.isCollapsed()) {
+      return 'fa-chevron-right';
+    } else {
+      return 'fa-chevron-down';
+    }
+  }
+
+  isCollapsed(): boolean {
+    return !!this.node?.isCollapsed;
+  }
+
+  isRoot() {
+    return !!this.node && this.node.isRoot;//this.documentation.typeDocumentation === TypeDocumentation.ROOT;
+  }
 }

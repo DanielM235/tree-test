@@ -1,7 +1,7 @@
 <aside class="page-sidebar flex-sidebar">
-  <accordion class="nav sidebar-menu" [closeOthers]="true" *ngFor="let item of groups" [isAnimated]="true">
-    <accordion-group [heading]="'IM ' + item.id" [isOpen]="isOpen(item)" (click)="activeChange.emit(item.id)">
-      <app-left-sidebar-item>
+  <accordion class="nav sidebar-menu" [closeOthers]="true" *ngFor="let group of groups" [isAnimated]="true">
+    <accordion-group [heading]="'IM ' + group.id" [isOpen]="isOpen(group)" (click)="activeChange.emit(group.id)">
+      <app-left-sidebar-item [group]="group" [isOpen]="isOpen(group)">
       </app-left-sidebar-item>
     </accordion-group>
   </accordion>

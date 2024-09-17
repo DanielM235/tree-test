@@ -5,9 +5,12 @@ import { LeftSidebarItemComponent } from './left-sidebar/left-sidebar-item/left-
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { EditionRoutingModule } from './edition-routing.module';
 import { CommonModule } from '@angular/common';
+import { EditionStateResolver } from './resolvers/edition-state.resolver';
+import { TestTreeModule } from '../test-tree/test-tree.module';
 
 @NgModule({
-  imports: [AccordionModule, EditionRoutingModule, CommonModule],
-  declarations: [EditionComponent, LeftSidebarComponent, LeftSidebarItemComponent]
+  imports: [AccordionModule, EditionRoutingModule, CommonModule, TestTreeModule],
+  declarations: [EditionComponent, LeftSidebarComponent, LeftSidebarItemComponent],
+  providers: [EditionStateResolver]
 })
 export class EditionModule {}

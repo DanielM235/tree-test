@@ -1,4 +1,5 @@
 <div class="tree-folder-header"
+     [ngStyle]="getStyle()"
      (click)="node?.mouseAction('click', $event)"
      (dblclick)="node?.mouseAction('dblClick', $event)"
      (contextmenu)="node?.mouseAction('contextMenu', $event)"
@@ -6,7 +7,11 @@
      [treeAllowDrop]="node?.allowDrop"
      [treeDrag]="node"
      [treeDragEnabled]="node?.allowDrag()">
-  <div class="tree-item-name" [title]="getTitle()">{{ getTitle() }}
+
+  <div *ngIf="node?.hasChildren" data-nodrag (click)="node?.mouseAction('expanderClick', $event)">
+    <span class="edc-blue fa icon" [ngClass]="getIcon()"> > </span>
+  </div>
+  <div class="tree-item-name" [title]="getTitle()">Documentation id : {{ node?.id }}
   </div>
 </div>
 <!--<tree-node-content [node]="node" [index]="index"></tree-node-content>-->

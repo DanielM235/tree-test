@@ -8,7 +8,7 @@ const routes: Routes = [LoginRoute, EditionRoute, HomeRoute];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    enableTracing: true,
+    enableTracing: false,
   })],
   exports: [RouterModule]
 })

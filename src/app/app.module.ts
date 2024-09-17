@@ -13,6 +13,8 @@ import { TestTreeModule } from './test-tree/test-tree.module';
 import { AuthEffects } from './store/effects/auth.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { authReducer } from './store/reducers/auth.reducer';
+import { editionReducer } from './store/reducers/edition.reducer';
+import { EditionEffects } from './store/effects/edition.effects';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,7 @@ import { authReducer } from './store/reducers/auth.reducer';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({ tree: treeReducer, auth: authReducer }),
+    StoreModule.forRoot({ tree: treeReducer, auth: authReducer, edition: editionReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Conserve les 25 derniers états
       logOnly: !isDevMode(), // Mode lecture seule en production
@@ -31,7 +33,7 @@ import { authReducer } from './store/reducers/auth.reducer';
       // traceLimit: 75, // Limite des frames de trace de pile
       // connectInZone: true // Établit la connexion dans la zone Angular
     }),
-    EffectsModule.forRoot([TreeEffects, AuthEffects]),
+    EffectsModule.forRoot([TreeEffects, AuthEffects, EditionEffects]),
     BrowserAnimationsModule,
     TestTreeModule
   ],

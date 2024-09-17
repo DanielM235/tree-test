@@ -6,6 +6,7 @@ export class Documentation {
   rank: number | undefined;
   parentId: number | undefined;
   productId: number | undefined;
+  children: Documentation[] = [];
 
   static create(obj: any) {
     const im = new Documentation();
